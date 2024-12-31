@@ -32,8 +32,8 @@ parser.add_argument('--try_gap_loop_detection', type=int, default=10) # same as 
 parser.add_argument('--loop_threshold', type=float, default=0.11) # 0.11 is usually safe (for avoiding false loop closure)
 
 parser.add_argument('--data_base_dir', type=str, 
-                    default='/your/path/.../data_odometry_velodyne/dataset/sequences')
-parser.add_argument('--sequence_idx', type=str, default='00')
+                    default='D:/kitti/dataset/sequences')
+parser.add_argument('--sequence_idx', type=str, default='06')
 
 parser.add_argument('--save_gap', type=int, default=300)
 
@@ -78,7 +78,7 @@ with writer.saving(fig, video_name, num_frames_to_save): # this video saving par
     for for_idx, scan_path in tqdm(enumerate(scan_paths), total=num_frames, mininterval=5.0):
 
         # get current information     
-        curr_scan_pts = Ptutils.readScan(scan_path) 
+        curr_scan_pts = Ptutils.readScan(scan_path)  # 读取
         curr_scan_down_pts = Ptutils.random_sampling(curr_scan_pts, num_points=args.num_icp_points)
 
         # save current node
